@@ -14,35 +14,42 @@
                 <form
                     oninput="x.value=(parseInt(eligible.value)*0.015)+((parseInt(total.value)-parseInt(eligible.value))*0.005);y.value=parseInt(x.value)*2;"
                 >
-                    <h4>Total monthly spend</h4>
-                    <input
-                        type="range"
-                        id="total"
-                        name="total"
-                        min="0"
-                        max="20000"
-                        value="11000"
-                    />
-                    <h4>
-                        Total monthly spend on eligible Health &amp; Wellness
-                    </h4>
-                    <input
-                        type="range"
-                        id="eligible"
-                        name="eligible"
-                        min="0"
-                        max="20000"
-                        value="1000"
-                    />
-                    <div class="calculator-results">
-                        <div class="calculator-results-wrap">
-                            <div class="total-base">
-                                <h3>Base cash back:</h3>
-                                <output name="x" for="total eligible"></output>
-                            </div>
-                            <div class="total-boost">
-                                <h3>With Boost cash back:</h3>
-                                <output name="y" for="total eligible"></output>
+                    <div class="calculator-flex">
+                        <div class="calculator-sliders">
+                            <h4>Total monthly spend</h4>
+                            <input
+                                type="range"
+                                id="total"
+                                name="total"
+                                min="0"
+                                max="20000"
+                            />
+                            <h4>
+                                Total monthly spend on eligible Health &amp;
+                                Wellness
+                            </h4>
+                            <input
+                                type="range"
+                                id="eligible"
+                                name="eligible"
+                                min="0"
+                                max="20000"
+                            />
+                        </div>
+                        <div class="calculator-results">
+                            <div class="calculator-results-wrap">
+                                <div class="total-base">
+                                    <h3>Base cash back:</h3>
+                                    <output name="x" for="total eligible">
+                                        0
+                                    </output>
+                                </div>
+                                <div class="total-boost">
+                                    <h3>With Boost cash back:</h3>
+                                    <output name="y" for="total eligible">
+                                        0
+                                    </output>
+                                </div>
                             </div>
                         </div>
                     </div>
