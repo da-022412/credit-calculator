@@ -23,6 +23,30 @@ body {
 
 .calculator-sliders input {
     width: 100%;
+    position: relative;
+}
+
+.calculator-sliders input:after,
+.calculator-sliders input:before {
+    color: transparent;
+    font-size: 32px;
+    position: absolute;
+    top: 100%;
+    -webkit-text-stroke: 1px #fff;
+}
+
+.calculator-sliders input:after {
+    content: '$20000';
+    right: 0;
+}
+
+.calculator-sliders input:before {
+    content: '$0';
+    left: 0;
+}
+
+.calculator-slider:first-of-type {
+    margin-bottom: 80px;
 }
 
 .calculator-results {
@@ -33,4 +57,24 @@ body {
     padding: 32px;
     text-align: center;
     width: 30%;
+}
+
+@media(max-width:980px){
+    .calculator-flex {
+        flex-direction: column;
+    }
+
+    .calculator-sliders {
+        width: 100%;
+    }
+
+    .calculator-results {
+        margin-top: 80px;
+        width: 100%;
+    }
+
+    .calculator-sliders input:after,
+    .calculator-sliders input:before {
+        font-size: 24px;
+    }
 }
