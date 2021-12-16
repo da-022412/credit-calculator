@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link rel="stylesheet" href="main.css" />
-        <script src="scripts.js"></script>
     </head>
     <body>
         <section class="calculator">
@@ -18,28 +17,36 @@
                         <div class="calculator-sliders">
                             <div class="calculator-slider">
                                 <h5>Total monthly spend</h5>
-                                <input
-                                    type="range"
-                                    id="total"
-                                    name="total"
-                                    min="0"
-                                    max="20000"
-                                    step="10"
-                                />
+                                <div class="range-wrap">
+                                    <input
+                                        type="range"
+                                        id="total"
+                                        name="total"
+                                        min="0"
+                                        max="20000"
+                                        step="100"
+                                        class="range"
+                                    />
+                                    <output class="bubble"></output>
+                                </div>
                             </div>
                             <div class="calculator-slider">
                                 <h5>
                                     Total monthly spend on eligible Health &amp;
                                     Wellness
                                 </h5>
-                                <input
-                                    type="range"
-                                    id="eligible"
-                                    name="eligible"
-                                    min="0"
-                                    max="20000"
-                                    step="10"
-                                />
+                                <div class="range-wrap">
+                                    <input
+                                        type="range"
+                                        id="eligible"
+                                        name="eligible"
+                                        min="0"
+                                        max="20000"
+                                        step="100"
+                                        class="range"
+                                    />
+                                    <output class="bubble"></output>
+                                </div>
                             </div>
                         </div>
                         <div class="calculator-results">
@@ -62,5 +69,36 @@
                 </form>
             </div>
         </section>
+        <div class="sub-title">
+            <h5>
+                When you hit your 150-minute Paceline Streak, you'll unlock a
+                cash back Boost.
+            </h5>
+        </div>
+        <script>
+            const allRanges = document.querySelectorAll('.range-wrap');
+            allRanges.forEach((wrap) => {
+                const range = wrap.querySelector('.range');
+                const bubble = wrap.querySelector('.bubble');
+
+                range.addEventListener('input', () => {
+                    setBubble(range, bubble);
+                });
+                setBubble(range, bubble);
+            });
+
+            function setBubble(range, bubble) {
+                const val = range.value;
+                const min = range.min ? range.min : 0;
+                const max = range.max ? range.max : 100;
+                const newVal = Number(((val - min) * 100) / (max - min));
+                bubble.innerHTML = val;
+
+                // Sorta magic numbers based on size of the native UI thumb
+                bubble.style.left = `calc(${newVal}% + (${
+                    8 - newVal * 0.15
+                }px))`;
+            }
+        </script>
     </body>
 </html>
