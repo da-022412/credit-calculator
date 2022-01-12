@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="range-styles.css" />
     </head>
     <body>
         <section class="calculator">
@@ -16,7 +17,7 @@
                     <div class="calculator-flex">
                         <div class="calculator-sliders">
                             <div class="calculator-slider">
-                                <h5>Total monthly spend</h5>
+                                <h5 class="range-title">Total monthly spend</h5>
                                 <div class="range-wrap">
                                     <input
                                         type="range"
@@ -31,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="calculator-slider">
-                                <h5>
+                                <h5 class="range-title">
                                     Total monthly spend on eligible Health &amp;
                                     Wellness
                                 </h5>
@@ -99,6 +100,26 @@
                     8 - newVal * 0.15
                 }px))`;
             }
+            const rangeInputs = document.querySelectorAll(
+                'input[type="range"]'
+            );
+
+            function handleInputChange(e) {
+                let target = e.target;
+                if (e.target.type !== 'range') {
+                    target = document.getElementById('range');
+                }
+                const min = target.min;
+                const max = target.max;
+                const val = target.value;
+
+                target.style.backgroundSize =
+                    ((val - min) * 100) / (max - min) + '% 100%';
+            }
+
+            rangeInputs.forEach((input) => {
+                input.addEventListener('input', handleInputChange);
+            });
         </script>
     </body>
 </html>

@@ -19,3 +19,20 @@ function setBubble(range, bubble) {
     // Sorta magic numbers based on size of the native UI thumb
     bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
 }
+const rangeInputs = document.querySelectorAll('input[type="range"]');
+
+function handleInputChange(e) {
+    let target = e.target;
+    if (e.target.type !== 'range') {
+        target = document.getElementById('range');
+    }
+    const min = target.min;
+    const max = target.max;
+    const val = target.value;
+
+    target.style.backgroundSize = ((val - min) * 100) / (max - min) + '% 100%';
+}
+
+rangeInputs.forEach((input) => {
+    input.addEventListener('input', handleInputChange);
+});
