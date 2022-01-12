@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link rel="stylesheet" href="main.css" />
-        <link rel="stylesheet" href="range-styles.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <section class="calculator">
@@ -27,6 +27,7 @@
                                         max="20000"
                                         step="100"
                                         class="range"
+                                        oninput="restrict()"
                                     />
                                     <output class="bubble"></output>
                                 </div>
@@ -45,6 +46,7 @@
                                         max="20000"
                                         step="100"
                                         class="range"
+                                        oninput="restrict()"
                                     />
                                     <output class="bubble"></output>
                                 </div>
@@ -95,7 +97,6 @@
                 const newVal = Number(((val - min) * 100) / (max - min));
                 bubble.innerHTML = val;
 
-                // Sorta magic numbers based on size of the native UI thumb
                 bubble.style.left = `calc(${newVal}% + (${
                     8 - newVal * 0.15
                 }px))`;
@@ -120,6 +121,12 @@
             rangeInputs.forEach((input) => {
                 input.addEventListener('input', handleInputChange);
             });
+
+            function restrict() {
+                if (+rangeInputs[1].value >= rangeInputs[0].value) {
+                    rangeInputs[1].value = +rangeInputs[0].value - 1;
+                }
+            }
         </script>
     </body>
 </html>
