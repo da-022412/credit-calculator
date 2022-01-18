@@ -73,10 +73,12 @@
             </div>
         </section>
         <div class="sub-title">
-            <h5>
-                When you hit your 150-minute Paceline Streak, you'll unlock a
-                cash back Boost.
-            </h5>
+            <p>
+                Rewards value calculated assuming 5.0% cash back on Health &
+                Wellness purchases and 3.0% cash back on all other purchases.
+                This content is for general information purposes only and is
+                based on consumer chosen modeling.
+            </p>
         </div>
         <script>
             const allRanges = document.querySelectorAll('.range-wrap');
@@ -97,6 +99,7 @@
                 const newVal = Number(((val - min) * 100) / (max - min));
                 bubble.innerHTML = val;
 
+                // Sorta magic numbers based on size of the native UI thumb
                 bubble.style.left = `calc(${newVal}% + (${
                     8 - newVal * 0.15
                 }px))`;

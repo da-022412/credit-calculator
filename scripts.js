@@ -36,3 +36,9 @@ function handleInputChange(e) {
 rangeInputs.forEach((input) => {
     input.addEventListener('input', handleInputChange);
 });
+
+function restrict() {
+    if (+rangeInputs[1].value >= rangeInputs[0].value) {
+        rangeInputs[1].value = +rangeInputs[0].value - 1;
+    }
+}
